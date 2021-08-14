@@ -23,7 +23,7 @@ export class Bank extends Model<Bank> {
   @PrimaryKey
   @AutoIncrement
   @Column
-  projectID: number;
+  bankID: number;
 
   @Column
   name: string;
@@ -34,6 +34,6 @@ export class Bank extends Model<Bank> {
   @HasMany(() => Customer)
   customers: Customer[];
 
-  @BelongsToMany(() => Project, () => ProjectBank, 'ProjectID')
+  @BelongsToMany(() => Project, () => ProjectBank, 'projectID')
   projects: Project[];
 }
