@@ -1,5 +1,8 @@
 
 import { Sequelize } from 'sequelize-typescript';
+import { Bank } from 'src/modules/bank/entities/bank.entity';
+import { Customer } from 'src/modules/customer/entities/customer.entity';
+import { Project } from 'src/modules/project/entities/project.entity';
 
 export const databaseProviders = [
   {
@@ -13,7 +16,7 @@ export const databaseProviders = [
         password: '123456',
         database: 'postgres',
       });
-      sequelize.addModels([]);
+      sequelize.addModels([Customer,Project,Bank]);
       await sequelize.sync();
       return sequelize;
     },
