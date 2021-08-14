@@ -31,9 +31,9 @@ export class Bank extends Model<Bank> {
   @Column
   address: string;
 
-  @HasMany(()=>Customer)
-  customers : Customer[]
+  @HasMany(() => Customer)
+  customers: Customer[];
 
-  @BelongsToMany(()=>Project,()=>ProjectBank)
-  projects : Project[]
+  @BelongsToMany(() => Project, () => ProjectBank, 'ProjectID')
+  projects: Project[];
 }

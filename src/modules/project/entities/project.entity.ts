@@ -31,7 +31,7 @@ export class Project extends Model<Project> {
   @HasMany(()=>Customer)
   customers : Customer[]
 
-  @BelongsToMany(()=>Bank,()=>ProjectBank)
+  @BelongsToMany(()=>Bank,()=>ProjectBank ,'bankID')
   banks : Bank[]
 
 }
