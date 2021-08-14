@@ -13,9 +13,5 @@ import { CustomerService } from '../services/customer.service';
 export class CustomerController {
     constructor(private readonly customerService: CustomerService) {}
 
-  @Get()
-  getTest(@Res() res) {
-    const data = this.customerService.test()
-    return res.status(HttpStatus.OK).json({ data });
-  }
+  
 }
