@@ -4,7 +4,12 @@ import {
   Column,
   AutoIncrement,
   PrimaryKey,
+  HasMany,
+  BelongsToMany,
 } from 'sequelize-typescript';
+import { Customer } from 'src/modules/customer/entities/customer.entity';
+import { ProjectBank } from 'src/modules/project/entities/project.bank.entity';
+import { Project } from 'src/modules/project/entities/project.entity';
 
 @Table({
   tableName: 'bank',
@@ -25,4 +30,10 @@ export class Bank extends Model<Bank> {
 
   @Column
   address: string;
+
+  @HasMany(()=>Customer)
+  customers : Customer[]
+
+  @BelongsToMany(()=>Project,()=>ProjectBank)
+  projects : Project[]
 }

@@ -1,14 +1,13 @@
-import { Table, Model, Column, AutoIncrement, PrimaryKey } from 'sequelize-typescript';
+import { Table, Model, Column, AutoIncrement, PrimaryKey, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Bank } from 'src/modules/bank/entities/bank.entity';
+import { Project } from 'src/modules/project/entities/project.entity';
 
 @Table({
   tableName: 'customer',
   timestamps: true,
   paranoid: true,
 })
-// customerID: number
-// name: string
-// projectID: number
-// bankID: number
+
 export class Customer extends Model<Customer> {
 
   @PrimaryKey
@@ -18,5 +17,20 @@ export class Customer extends Model<Customer> {
 
   @Column
   name : string
+
+  @ForeignKey(()=>Project)
+  @Column
+  projectID : number
+
+  @BelongsTo(()=>Project)
+  project:Project
+
+  @ForeignKey(()=>Bank)
+  @Column
+  bankID : number
+
+  @BelongsTo(()=>Bank)
+  bank:Bank
+
 
 }
